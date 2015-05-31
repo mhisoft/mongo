@@ -104,3 +104,13 @@ We will now create an index on the state and pincode fields as follows:
 ```
 
 
+Some of the operators that do not use the index efficiently are the $where, $nin, and $exists operators. 
+Whenever these operators are used in the query, one should bear in mind a possible performance bottleneck when the data size increases. 
+Similarly, the $in operator must be preferred over the $or operator, as both can be more or less used to achieve the same result.
+
+
+db.postalCodes.find({state:'Maharashtra'}, {pincode:1, _id:0}).explain()
+
+###Create an index in the background###
+Create the index again but, this time, in the background:
+> db.indexTest.ensureIndex({value:1}, {background:true})
