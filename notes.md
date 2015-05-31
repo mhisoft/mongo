@@ -50,7 +50,7 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 '''
 'db.updAndDelTest.update({x:1}, {$set:{y:0}})', it only updates the first document that matches the query provided as the first parameter. 
 
-The update function has the db.<collection name>.update(query, update object, isUpsert, isMulti) format.
+The update function has the ***db.<collection name>.update(query, update object, isUpsert, isMulti)*** format.
 
 Removals, on other hand, behave differently. By default, the remove operation deletes all the documents that match the provided query. However, if we wish to delete only one document, we will explicitly pass the second parameter as true.
 
