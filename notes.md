@@ -54,8 +54,54 @@ The update function has the ***db.<collection name>.update(query, update object,
 
 Removals, on other hand, behave differently. By default, the remove operation deletes all the documents that match the provided query. However, if we wish to delete only one document, we will explicitly pass the second parameter as true.
 
+###Index###
+We will now create an index on the state and pincode fields as follows:
+> db.postalCodes.ensureIndex({state:1, pincode:1})
 
+>db.postalCodes.find({state:'Maharashtra'}).explain()
 
+'''
+ 
 
+       "queryPlanner" : {
+               "plannerVersion" : 1,
+               "namespace" : "test.postalCodes",
+               "indexFilterSet" : false,
+               "parsedQuery" : {
+                       "state" : {
+                               "$eq" : "Maharashtra"
+                       }
+               },
+               "winningPlan" : {
+                       "stage" : "FETCH",
+                       "inputStage" : {
+                               "stage" : "IXSCAN",
+                               "keyPattern" : {
+                                       "state" : 1,
+                                       "pincode" : 1
+                               },
+                               "indexName" : "state_1_pincode_1",
+                               "isMultiKey" : false,
+                               "direction" : "forward",
+                               "indexBounds" : {
+                                       "state" : [
+                                               "[\"Maharashtra\", \"Maharashtra\"]"
+                                       ],
+                                       "pincode" : [
+                                               "[MinKey, MaxKey]"
+                                       ]
+                               }
+                       }
+               },
+               "rejectedPlans" : [ ]
+       },
+       "serverInfo" : {
+               "host" : "eagleii",
+               "port" : 27017,
+               "version" : "3.0.3",
+               "gitVersion" : "b40106b36eecd1b4407eb1ad1af6bc60593c6105"
+       },
+       "ok" : 1
+       '''
 
 
