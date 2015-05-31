@@ -58,10 +58,9 @@ Removals, on other hand, behave differently. By default, the remove operation de
 We will now create an index on the state and pincode fields as follows:
 > db.postalCodes.ensureIndex({state:1, pincode:1})
 
->db.postalCodes.find({state:'Maharashtra'}).explain()
+> db.postalCodes.find({state:'Maharashtra'}).explain()
 
-'''
- 
+```
 
        "queryPlanner" : {
                "plannerVersion" : 1,
@@ -76,11 +75,11 @@ We will now create an index on the state and pincode fields as follows:
                        "stage" : "FETCH",
                        "inputStage" : {
                                "stage" : "IXSCAN",
-                               "keyPattern" : {
+                             ***  "keyPattern" : {
                                        "state" : 1,
                                        "pincode" : 1
                                },
-                               "indexName" : "state_1_pincode_1",
+                             ***  "indexName" : "state_1_pincode_1", ***
                                "isMultiKey" : false,
                                "direction" : "forward",
                                "indexBounds" : {
@@ -102,6 +101,6 @@ We will now create an index on the state and pincode fields as follows:
                "gitVersion" : "b40106b36eecd1b4407eb1ad1af6bc60593c6105"
        },
        "ok" : 1
-       '''
+```
 
 
