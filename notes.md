@@ -1,1 +1,61 @@
-#Header
+
+
+'mongo --shell UpdAndDelTest.js'
+
+'''
+S:\MongoDB>mongo --shell UpdAndDelTest.js
+MongoDB shell version: 3.0.3
+connecting to: test
+type "help" for help
+> prepareTestData()
+Inserted 20 documents in updAndDelTest
+> db.updAndDelTest.find({}, {_id:0})
+{ "x" : 1, "y" : 1 }
+{ "x" : 1, "y" : 2 }
+{ "x" : 1, "y" : 3 }
+{ "x" : 1, "y" : 4 }
+{ "x" : 1, "y" : 5 }
+{ "x" : 1, "y" : 6 }
+{ "x" : 1, "y" : 7 }
+{ "x" : 1, "y" : 8 }
+{ "x" : 1, "y" : 9 }
+{ "x" : 1, "y" : 10 }
+{ "x" : 2, "y" : 1 }
+{ "x" : 2, "y" : 2 }
+{ "x" : 2, "y" : 3 }
+{ "x" : 2, "y" : 4 }
+{ "x" : 2, "y" : 5 }
+{ "x" : 2, "y" : 6 }
+{ "x" : 2, "y" : 7 }
+{ "x" : 2, "y" : 8 }
+{ "x" : 2, "y" : 9 }
+{ "x" : 2, "y" : 10 }
+
+
+
+> db.updAndDelTest.update({x:1}, {$set:{y:0}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.updAndDelTest.find({x:1}, {_id:0})
+{ "x" : 1, "y" : 0 }
+{ "x" : 1, "y" : 2 }
+{ "x" : 1, "y" : 3 }
+{ "x" : 1, "y" : 4 }
+{ "x" : 1, "y" : 5 }
+{ "x" : 1, "y" : 6 }
+{ "x" : 1, "y" : 7 }
+{ "x" : 1, "y" : 8 }
+{ "x" : 1, "y" : 9 }
+{ "x" : 1, "y" : 10 }
+>
+'''
+'db.updAndDelTest.update({x:1}, {$set:{y:0}})', it only updates the first document that matches the query provided as the first parameter. 
+
+The update function has the db.<collection name>.update(query, update object, isUpsert, isMulti) format.
+
+Removals, on other hand, behave differently. By default, the remove operation deletes all the documents that match the provided query. However, if we wish to delete only one document, we will explicitly pass the second parameter as true.
+
+
+
+
+
+
