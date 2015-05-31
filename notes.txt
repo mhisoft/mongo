@@ -1,4 +1,4 @@
-mongo --shell UpdAndDelTest.js
+'mongo --shell UpdAndDelTest.js'
 
 
 S:\MongoDB>mongo --shell UpdAndDelTest.js
