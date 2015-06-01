@@ -1,6 +1,8 @@
 
-
+###start with a shell script###
 'mongo --shell UpdAndDelTest.js'
+
+###load data###
 
 '''
 S:\MongoDB>mongo --shell UpdAndDelTest.js
