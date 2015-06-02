@@ -130,5 +130,5 @@ Creating unique indexes on collection and deleting the existing duplicate data a
 ###TTL index###
 `> db.ttlTest.ensureIndex({createDate:1}, {expireAfterSeconds:300})` 
 
-The first parameter is {createDate:1}; this will tell Mongo to create an index on the createDate field, and the order of the index is ascending as the value is 1 (-1 would have been descending)
-The second parameter, {expireAfterSeconds:300}, is what makes this index a TTL index; it tells Mongo to automatically expire the documents after 300 seconds (5 minutes)
+* The first parameter is {createDate:1}; this will tell Mongo to create an index on the createDate field, and the order of the index is ascending as the value is 1 (-1 would have been descending)
+* The second parameter, {expireAfterSeconds:300}, is what makes this index a TTL index; it tells Mongo to automatically expire the documents after 300 seconds (5 minutes)
