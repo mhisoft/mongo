@@ -121,7 +121,7 @@ Creating unique indexes on collection and deleting the existing duplicate data a
 `> db.userDetails.ensureIndex({login:1}, {unique:true, dropDups:true})`
 
 
- sparse index 
+### sparse index ###
        Documents in a collection to have disparate fields, with some fields present in some documents and absent in the others. In other words, these fields might be sparse;
        Add sparse:1 to the options along with unique:1. This does not put an entry in the index if the field doesn't exist in the document. 
 `> db.sparseTest.ensureIndex({y:1}, {unique:1, sparse:1})`
