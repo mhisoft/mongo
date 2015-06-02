@@ -116,3 +116,12 @@ db.postalCodes.find({state:'Maharashtra'}, {pincode:1, _id:0}).explain()
 ###Create an index in the background###
 Create the index again but, this time, in the background:
 > db.indexTest.ensureIndex({value:1}, {background:true})
+
+Creating unique indexes on collection and deleting the existing duplicate data automatically
+`> db.userDetails.ensureIndex({login:1}, {unique:true, dropDups:true})`
+
+
+ sparse index 
+       Documents in a collection to have disparate fields, with some fields present in some documents and absent in the others. In other words, these fields might be sparse;
+       Add sparse:1 to the options along with unique:1. This does not put an entry in the index if the field doesn't exist in the document. 
+`> db.sparseTest.ensureIndex({y:1}, {unique:1, sparse:1})`
