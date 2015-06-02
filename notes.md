@@ -4,7 +4,7 @@
 
 ###load data###
 
-'''
+```
 S:\MongoDB>mongo --shell UpdAndDelTest.js
 MongoDB shell version: 3.0.3
 connecting to: test
