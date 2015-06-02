@@ -125,3 +125,10 @@ Creating unique indexes on collection and deleting the existing duplicate data a
        Documents in a collection to have disparate fields, with some fields present in some documents and absent in the others. In other words, these fields might be sparse;
        Add sparse:1 to the options along with unique:1. This does not put an entry in the index if the field doesn't exist in the document. 
 `> db.sparseTest.ensureIndex({y:1}, {unique:1, sparse:1})`
+
+
+###TTL index###
+`> db.ttlTest.ensureIndex({createDate:1}, {expireAfterSeconds:300})` 
+
+The first parameter is {createDate:1}; this will tell Mongo to create an index on the createDate field, and the order of the index is ascending as the value is 1 (-1 would have been descending)
+The second parameter, {expireAfterSeconds:300}, is what makes this index a TTL index; it tells Mongo to automatically expire the documents after 300 seconds (5 minutes)
