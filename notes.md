@@ -32,9 +32,9 @@ Inserted 20 documents in updAndDelTest
 { "x" : 2, "y" : 8 }
 { "x" : 2, "y" : 9 }
 { "x" : 2, "y" : 10 }
+```
 
-
-
+```
 > db.updAndDelTest.update({x:1}, {$set:{y:0}})
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 > db.updAndDelTest.find({x:1}, {_id:0})
@@ -49,7 +49,8 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 { "x" : 1, "y" : 9 }
 { "x" : 1, "y" : 10 }
 >
-'''
+```
+
 'db.updAndDelTest.update({x:1}, {$set:{y:0}})', it only updates the first document that matches the query provided as the first parameter. 
 
 The update function has the ***db.<collection name>.update(query, update object, isUpsert, isMulti)*** format.
